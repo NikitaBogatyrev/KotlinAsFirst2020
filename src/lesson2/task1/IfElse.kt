@@ -6,6 +6,7 @@ import lesson1.task1.discriminant
 import kotlin.math.max
 import kotlin.math.sqrt
 
+
 // Урок 2: ветвления (здесь), логический тип (см. 2.2).
 // Максимальное количество баллов = 6
 // Рекомендуемое количество баллов = 5
@@ -103,7 +104,6 @@ fun whichRookThreatens(
 else(if ((kingX == rookX2 || kingY == rookY2) && (kingX != rookX1 && kingY != rookY1)) 2
 else(if((kingX == rookX1 || kingY == rookY1) && (kingX == rookX2 || kingY == rookY2)) 3
 else(0)))
-
 /**
  * Простая (2 балла)
  *
@@ -118,7 +118,14 @@ fun rookOrBishopThreatens(
     kingX: Int, kingY: Int,
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
-): Int = TODO()
+): Int = if (((kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY))
+    && (kingX != rookX) && (kingY != rookY)) 2
+else (if(((kingX - bishopX) * (kingX - bishopX) != (kingY - bishopY) * (kingY - bishopY)
+    && ((kingX == rookX) || (kingY == rookY)))) 1
+        else (if(((kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY))
+        && ((kingX == rookX) || (kingY == rookY))) 3
+else 0))
+
 
 /**
  * Простая (2 балла)
