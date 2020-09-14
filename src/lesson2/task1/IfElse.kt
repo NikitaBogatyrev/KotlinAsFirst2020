@@ -70,9 +70,8 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
 fun ageDescription(age: Int): String = if (age % 10 == 1 && age != 11 && age != 111) "$age год"
-else(if ((age % 10 == 2 || age % 10 == 3 || age % 10 == 4) && age != 12 &&
-    age != 13 && age != 14 && age!=112 && age!=113 && age!=114) "$age года"
-         else ("$age лет"))
+else (if ((age % 10 == 2 || age % 10 == 3 || age % 10 == 4) && age % 100 != 12 && age % 100 != 13 && age % 100 != 14) "$age года"
+else ("$age лет"))
 
 /**
  * Простая (2 балла)
@@ -101,9 +100,10 @@ fun whichRookThreatens(
     rookX1: Int, rookY1: Int,
     rookX2: Int, rookY2: Int
 ): Int = if ((kingX == rookX1 || kingY == rookY1) && (kingX != rookX2 && kingY != rookY2)) 1
-else(if ((kingX == rookX2 || kingY == rookY2) && (kingX != rookX1 && kingY != rookY1)) 2
-else(if((kingX == rookX1 || kingY == rookY1) && (kingX == rookX2 || kingY == rookY2)) 3
-else(0)))
+else (if ((kingX == rookX2 || kingY == rookY2) && (kingX != rookX1 && kingY != rookY1)) 2
+else (if ((kingX == rookX1 || kingY == rookY1) && (kingX == rookX2 || kingY == rookY2)) 3
+else (0)))
+
 /**
  * Простая (2 балла)
  *
@@ -119,11 +119,14 @@ fun rookOrBishopThreatens(
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
 ): Int = if (((kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY))
-    && (kingX != rookX) && (kingY != rookY)) 2
-else (if(((kingX - bishopX) * (kingX - bishopX) != (kingY - bishopY) * (kingY - bishopY)
-    && ((kingX == rookX) || (kingY == rookY)))) 1
-        else (if(((kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY))
-        && ((kingX == rookX) || (kingY == rookY))) 3
+    && (kingX != rookX) && (kingY != rookY)
+) 2
+else (if (((kingX - bishopX) * (kingX - bishopX) != (kingY - bishopY) * (kingY - bishopY)
+            && ((kingX == rookX) || (kingY == rookY)))
+) 1
+else (if (((kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY))
+    && ((kingX == rookX) || (kingY == rookY))
+) 3
 else 0))
 
 
@@ -135,7 +138,7 @@ else 0))
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int =
 
 /**
  * Средняя (3 балла)
