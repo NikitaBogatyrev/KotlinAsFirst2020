@@ -118,17 +118,14 @@ fun rookOrBishopThreatens(
     kingX: Int, kingY: Int,
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
-): Int = if (((kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY))
-    && (kingX != rookX) && (kingY != rookY)
-) 2
-else (if (((kingX - bishopX) * (kingX - bishopX) != (kingY - bishopY) * (kingY - bishopY)
-            && ((kingX == rookX) || (kingY == rookY)))
-) 1
-else (if (((kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY))
-    && ((kingX == rookX) || (kingY == rookY))
-) 3
-else 0))
-
+): Int {
+    val a = (kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY)
+    val b = ((kingX == rookX) || (kingY == rookY))
+    return if (a && (kingX != rookX) && (kingY != rookY)) 2
+    else (if (((kingX - bishopX) * (kingX - bishopX) != (kingY - bishopY) * (kingY - bishopY) && b)) 1
+    else (if (a && b) 3
+    else 0))
+}
 
 /**
  * Простая (2 балла)
@@ -138,7 +135,7 @@ else 0))
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int =
+fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
 
 /**
  * Средняя (3 балла)
