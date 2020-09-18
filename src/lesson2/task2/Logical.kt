@@ -47,6 +47,9 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean {
  */
 fun daysInMonth(month: Int, year: Int): Int = TODO()
 
+
+
+
 /**
  * Простая (2 балла)
  *
@@ -57,14 +60,11 @@ fun daysInMonth(month: Int, year: Int): Int = TODO()
 fun circleInside(
     x1: Double, y1: Double, r1: Double,
     x2: Double, y2: Double, r2: Double
-): Boolean {
-    return when {
-        x1 == x2 && y1 >= y2 && r1 < r2 -> true
-        x1 == x2 && y1 == y2 && r1 == r2 -> true
-        x1 >= x2 && y1 == y2 && r1 < r2 -> true
-        else -> false
-    }
-}
+): Boolean = TODO()
+
+
+
+
 
 /**
  * Средняя (3 балла)
@@ -75,10 +75,7 @@ fun circleInside(
  * кирпич 4 х 4 х 4 пройдёт через отверстие 4 х 4.
  * Вернуть true, если кирпич пройдёт
  */
-fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
-    return when{
-        (a * b <= r * s) || (a * c <= r * s) || (b * c <= r + s) -> true
-        else -> false
+fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean = TODO()
     }
 
 }
