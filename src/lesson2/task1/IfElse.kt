@@ -128,10 +128,14 @@ fun rookOrBishopThreatens(
 ): Int {
     val a = (kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY)
     val b = ((kingX == rookX) || (kingY == rookY))
-    return if (a && (kingX != rookX) && (kingY != rookY)) 2
-    else (if (((kingX - bishopX) * (kingX - bishopX) != (kingY - bishopY) * (kingY - bishopY) && b)) 1
-    else (if (a && b) 3
-    else 0))
+    val c = (kingX-bishopX)
+    val d = kingY-bishopY
+    return when {
+        a && (kingX != rookX) && (kingY != rookY) -> 2
+        (c * c) != (d * d) && b -> 1
+        a && b -> 3
+        else -> 0
+    }
 }
 
 /**
