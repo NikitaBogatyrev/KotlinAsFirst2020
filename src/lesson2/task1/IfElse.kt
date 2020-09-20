@@ -101,10 +101,11 @@ fun whichRookThreatens(
     rookX2: Int, rookY2: Int
 ): Int {
     val a = (kingX == rookX1 || kingY == rookY1)
+    val b = (kingX == rookX2 || kingY == rookY2)
     return when {
         a && (kingX != rookX2 && kingY != rookY2) -> 1
-        (kingX == rookX2 || kingY == rookY2) && (kingX != rookX1 && kingY != rookY1) -> 2
-        a && (kingX == rookX2 || kingY == rookY2) -> 3
+        b && (kingX != rookX1 && kingY != rookY1) -> 2
+        a && b -> 3
         else -> 0
     }
 }
