@@ -104,7 +104,15 @@ fun minDivisor(n: Int): Int {
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int {
+    var a = 1
+    for (i in 2 .. n - 1) {
+        while (n % i == 0 && i > a) {
+            a = i
+        }
+    }
+    return a
+}
 
 /**
  * Простая (2 балла)
