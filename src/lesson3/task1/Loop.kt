@@ -89,13 +89,11 @@ fun fib(n: Int): Int = TODO()
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
 fun minDivisor(n: Int): Int {
-    var a = 2147483647
-    for (i in 2..n) {
-        if (n % i == 0 && i < a) {
-            a = i
-        } else 0
+    var i = 2
+    while (n % i != 0) {
+        i++
     }
-    return a
+    return i
 }
 
 
@@ -106,13 +104,12 @@ fun minDivisor(n: Int): Int {
  */
 fun maxDivisor(n: Int): Int {
     var a = 1
-    for (i in 2..n - 1) {
-        while (n % i == 0 && i > a) {
-            a = i
-        }
+    for (i in 1 until n - 1) {
+        if (n % i == 0) a = i
     }
     return a
 }
+
 
 /**
  * Простая (2 балла)
@@ -153,6 +150,7 @@ fun collatzSteps(x: Int): Int {
  */
 fun lcm(m: Int, n: Int): Int = TODO()
 
+
 /**
  * Средняя (3 балла)
  *
@@ -175,12 +173,6 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
     }
     return false
 }
-
-
-
-
-
-
 
 
 /**
