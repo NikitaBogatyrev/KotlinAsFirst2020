@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_PARAMETER")
+@file:Suppress("UNUSED_PARAMETER", "NAME_SHADOWING")
 
 package lesson3.task1
 
@@ -118,7 +118,6 @@ fun maxDivisor(n: Int): Int {
     return a
 }
 
-
 /**
  * Простая (2 балла)
  *
@@ -181,7 +180,6 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
     return false
 }
 
-
 /**
  * Средняя (3 балла)
  *
@@ -200,7 +198,44 @@ fun revert(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean {
+    var q = n
+    var a = 1
+    var t = 1
+    var m = 0
+    var q1 = 0
+    var q2 = 0
+    var u = 0
+    while (q / 10 != 0) {
+        a++
+        q /= 10
+    }
+    u = a / 2
+    for (i in 1..u) {
+        t *= 10
+    }
+    if (q % 2 == 0) {
+        q1 = q / t
+        q2 = q % t
+        while (q2 > 0) {
+            m = m * 10 + q2 % 10
+            q2 /= 10
+        }
+        if (q1 == m) return true
+    }
+    if (q % 2 != 0) {
+        q1 = q / t / 10
+        q2 = q % t
+        while (q2 > 0) {
+            m = m * 10 + q2 % 10
+            q2 /= 10
+        }
+        if (q1 == m) return true
+    }
+    return false
+}
+
+
 
 /**
  * Средняя (3 балла)
