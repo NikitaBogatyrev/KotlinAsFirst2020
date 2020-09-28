@@ -47,9 +47,6 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean {
  */
 fun daysInMonth(month: Int, year: Int): Int = TODO()
 
-
-
-
 /**
  * Простая (2 балла)
  *
@@ -61,9 +58,6 @@ fun circleInside(
     x1: Double, y1: Double, r1: Double,
     x2: Double, y2: Double, r2: Double
 ): Boolean = TODO()
-
-
-
 
 
 /**
@@ -81,7 +75,8 @@ fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
                 (a <= s && c <= r || a <= r && c <= s) ||
                 (c <= s && b <= r || c <= r && b <= s) -> true
         else -> false
-}
+    }
+
 }
 
 
