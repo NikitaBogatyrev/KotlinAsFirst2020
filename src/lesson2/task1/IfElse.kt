@@ -135,7 +135,7 @@ fun rookOrBishopThreatens(
     val c = (kingX - bishopX)
     val d = kingY - bishopY
     return when {
-        a && (kingX != rookX) && (kingY != rookY) -> 2
+        a && !b -> 2
         (c * c) != (d * d) && b -> 1
         a && b -> 3
         else -> 0
