@@ -135,14 +135,13 @@ fun abs(v: List<Double>): Double {
  */
 fun mean(list: List<Double>): Double {
     var a = 0.0
-    var b = 0.0
     var k = 0.0
     if (list.isEmpty()) return 0.0
     for(i in 0 until list.size) {
         a += list[i]
         k++
     }
-    b = a / k
+    var b = a / k
     return b
 }
 
@@ -154,7 +153,20 @@ fun mean(list: List<Double>): Double {
  *
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
-fun center(list: MutableList<Double>): MutableList<Double> = TODO()
+fun center(list: MutableList<Double>): MutableList<Double> {
+    var a = 0.0
+    var k = 0.0
+    for (i in 0 until list.size) {
+        a += list[i]
+        k++
+    }
+    var b = a / k
+    for (i in 0 until list.size) {
+        list[i] -= b
+    }
+    return list
+}
+
 
 /**
  * Средняя (3 балла)
