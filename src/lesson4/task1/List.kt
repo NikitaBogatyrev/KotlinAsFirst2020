@@ -137,7 +137,7 @@ fun mean(list: List<Double>): Double {
     var a = 0.0
     var k = 0.0
     if (list.isEmpty()) return 0.0
-    for(i in 0 until list.size) {
+    for (i in 0 until list.size) {
         a += list[i]
         k++
     }
@@ -197,7 +197,12 @@ fun polynom(p: List<Int>, x: Int): Int = TODO()
  *
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
-fun accumulate(list: MutableList<Int>): MutableList<Int> = TODO()
+fun accumulate(list: MutableList<Int>): MutableList<Int> {
+    for(i in 1 until list.size) {
+        list[i] = list[i - 1] + list[i]
+    }
+    return list
+}
 
 /**
  * Средняя (3 балла)
