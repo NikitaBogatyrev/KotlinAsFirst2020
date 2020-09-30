@@ -190,7 +190,16 @@ fun times(a: List<Int>, b: List<Int>): Int {
  * Коэффициенты многочлена заданы списком p: (p0, p1, p2, p3, ..., pN).
  * Значение пустого многочлена равно 0 при любом x.
  */
-fun polynom(p: List<Int>, x: Int): Int = TODO()
+fun polynom(p: List<Int>, x: Int): Int {
+    var c = 0
+    var y = x
+    var t = 1
+    for(i in 0 until p.size) {
+        c += p[i] * t
+        t *= y
+    }
+    return c
+}
 
 /**
  * Средняя (3 балла)
