@@ -122,10 +122,10 @@ fun buildSumExample(list: List<Int>) = list.joinToString(separator = " + ", post
  */
 fun abs(v: List<Double>): Double {
     var a = 0.0
-    for (i in 0 until v.size) {
+    for (i in v.indices) {
         a += v[i] * v[i]
     }
-    return sqrt(a.toDouble())
+    return sqrt(a)
 }
 
 /**
@@ -137,12 +137,11 @@ fun mean(list: List<Double>): Double {
     var a = 0.0
     var k = 0.0
     if (list.isEmpty()) return 0.0
-    for (i in 0 until list.size) {
-        a += list[i]
+    for (element in list) {
+        a += element
         k++
     }
-    var b = a / k
-    return b
+    return a / k
 }
 
 /**
@@ -154,15 +153,15 @@ fun mean(list: List<Double>): Double {
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
 fun center(list: MutableList<Double>): MutableList<Double> {
-    var a = 0.0
-    var k = 0.0
+    var sum = 0.0
+    var chet = 0.0
     for (i in 0 until list.size) {
-        a += list[i]
-        k++
+        sum += list[i]
+        chet++
     }
-    var b = a / k
+    val theArithmeticMean = sum / chet
     for (i in 0 until list.size) {
-        list[i] -= b
+        list[i] -= theArithmeticMean
     }
     return list
 }
@@ -175,11 +174,11 @@ fun center(list: MutableList<Double>): MutableList<Double> {
  * C = a1b1 + a2b2 + ... + aNbN. Произведение пустых векторов считать равным 0.
  */
 fun times(a: List<Int>, b: List<Int>): Int {
-    var c = 0
-    for(i in 0 until a.size) {
-        c += a[i] * b[i]
+    var sum = 0
+    for (i in a.indices) {
+        sum += a[i] * b[i]
     }
-    return c
+    return sum
 }
 
 /**
@@ -191,14 +190,13 @@ fun times(a: List<Int>, b: List<Int>): Int {
  * Значение пустого многочлена равно 0 при любом x.
  */
 fun polynom(p: List<Int>, x: Int): Int {
-    var c = 0
-    var y = x
-    var t = 1
-    for(i in 0 until p.size) {
-        c += p[i] * t
-        t *= y
+    var sum = 0
+    var squarX = 1
+    for (element in p) {
+        sum += element * squarX
+        squarX *= x
     }
-    return c
+    return sum
 }
 
 /**
@@ -212,7 +210,7 @@ fun polynom(p: List<Int>, x: Int): Int {
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
 fun accumulate(list: MutableList<Int>): MutableList<Int> {
-    for(i in 1 until list.size) {
+    for (i in 1 until list.size) {
         list[i] = list[i - 1] + list[i]
     }
     return list
