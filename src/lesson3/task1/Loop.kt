@@ -112,8 +112,12 @@ fun minDivisor(n: Int): Int {
  */
 fun maxDivisor(n: Int): Int {
     var a = 1
-    for (i in 1 until n - 1) {
-        if (n % i == 0) a = i
+    if (n % 2 == 0) a = n / 2
+    else {
+        for (i in 1 until n - 1) {
+            if (n % i == 0) a = i
+        }
+
     }
     return a
 }
