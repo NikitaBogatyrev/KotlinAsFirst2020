@@ -210,7 +210,8 @@ fun revert(n: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean {
+fun isPalindrome(n: Int): Boolean = TODO()
+/**  ВЕРНУСЬ К ЗАДАЧЕ ПОЗЖЕ
     var q = n
     var a = 1
     var t = 1
@@ -245,7 +246,8 @@ fun isPalindrome(n: Int): Boolean {
         if (q1 == m) return true
     }
     return false
-}
+ */
+
 
 
 
