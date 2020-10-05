@@ -104,12 +104,12 @@ fun whichRookThreatens(
     rookX1: Int, rookY1: Int,
     rookX2: Int, rookY2: Int
 ): Int {
-    val a = (kingX == rookX1 || kingY == rookY1)
-    val b = (kingX == rookX2 || kingY == rookY2)
+    val winRook1 = (kingX == rookX1 || kingY == rookY1)
+    val winRook2 = (kingX == rookX2 || kingY == rookY2)
     return when {
-        a && !b -> 1
-        b && !a -> 2
-        a && b -> 3
+        winRook1 && !winRook2 -> 1
+        winRook2 && !winRook1 -> 2
+        winRook1 && winRook2 -> 3
         else -> 0
     }
 }
@@ -130,14 +130,14 @@ fun rookOrBishopThreatens(
     rookX: Int, rookY: Int,
     bishopX: Int, bishopY: Int
 ): Int {
-    val a = (kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY)
-    val b = ((kingX == rookX) || (kingY == rookY))
-    val c = (kingX - bishopX)
-    val d = kingY - bishopY
+    val winBishop = (kingX - bishopX) * (kingX - bishopX) == (kingY - bishopY) * (kingY - bishopY)
+    val winRook = ((kingX == rookX) || (kingY == rookY))
+    val winBishopOx = (kingX - bishopX)
+    val winBishopOy = kingY - bishopY
     return when {
-        a && !b -> 2
-        (c * c) != (d * d) && b -> 1
-        a && b -> 3
+        winBishop && !winRook -> 2
+        (winBishopOx * winBishopOx) != (winBishopOy * winBishopOy) && winRook -> 1
+        winBishop && winRook -> 3
         else -> 0
     }
 }
@@ -161,4 +161,5 @@ fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
  * Если пересечения нет, вернуть -1.
  */
 fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
+
 
