@@ -24,6 +24,7 @@ fun isNumberHappy(number: Int): Boolean {
         else -> false
     }
 }
+
 /**
  * Простая (2 балла)
  *
@@ -37,7 +38,6 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean {
         else -> false
     }
 }
-
 
 /**
  * Простая (2 балла)
