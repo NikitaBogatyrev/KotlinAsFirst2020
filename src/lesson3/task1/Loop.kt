@@ -97,9 +97,13 @@ fun fib(n: Int): Int = TODO()
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
 fun minDivisor(n: Int): Int {
-    var i = 2
-    while (n % i != 0) {
-        i++
+    var i = 0
+    if (n % 2 == 0) i = 2
+    else {
+        for (m in 3 until n step 2) {
+            if (n % m == 0) return m
+            else i = n
+        }
     }
     return i
 }
@@ -211,43 +215,6 @@ fun revert(n: Int): Int {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun isPalindrome(n: Int): Boolean = TODO()
-/**  ВЕРНУСЬ К ЗАДАЧЕ ПОЗЖЕ
-var q = n
-var a = 1
-var t = 1
-var m = 0
-var q1 = 0
-var q2 = 0
-var u = 0
-while (q / 10 != 0) {
-a++
-q /= 10
-}
-u = a / 2
-for (i in 1..u) {
-t *= 10
-}
-if (q % 2 == 0) {
-q1 = q / t
-q2 = q % t
-while (q2 > 0) {
-m = m * 10 + q2 % 10
-q2 /= 10
-}
-if (q1 == m) return true
-}
-if (q % 2 != 0) {
-q1 = q / t / 10
-q2 = q % t
-while (q2 > 0) {
-m = m * 10 + q2 % 10
-q2 /= 10
-}
-if (q1 == m) return true
-}
-return false
- */
-
 
 /**
  * Средняя (3 балла)
