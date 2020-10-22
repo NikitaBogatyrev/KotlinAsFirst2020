@@ -2,6 +2,7 @@
 
 package lesson3.task1
 
+import kotlin.math.PI
 import kotlin.math.sqrt
 
 // Урок 3: циклы
@@ -231,7 +232,35 @@ fun revert(n: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean {
+    var N = n
+    var chet = 1
+    var i = 1
+    var nn = n
+    while (nn > 9) {
+        chet++
+        i *= 10
+        nn /= 10
+    }
+    if (chet % 2 == 0) {
+        while (N > 0) {
+            if (N % 10 == N / i) {
+                N %= i
+                N /= 10
+                i /= 100
+            } else return false
+        }
+    } else {
+        while (N > 9) {
+            if (N % 10 == N / i) {
+                N %= i
+                N /= 10
+                i /= 100
+            } else return false
+        }
+    }
+    return true
+}
 
 /**
  * Средняя (3 балла)
@@ -261,7 +290,20 @@ fun hasDifferentDigits(n: Int): Boolean {
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
-fun sin(x: Double, eps: Double): Double = TODO()
+fun sin(x: Double, eps: Double): Double {
+    var X = x % (PI * 2)
+    var znak = 1
+    var s = X
+    var pow = 1
+    var result = 0.0
+    while (Math.abs(s) - eps > 0) {
+        znak *= -1
+        pow += 2
+        result += s
+        s = znak * Math.pow(X, pow.toDouble()) / factorial(pow)
+    }
+    return result
+}
 
 /**
  * Средняя (4 балла)
@@ -272,7 +314,20 @@ fun sin(x: Double, eps: Double): Double = TODO()
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.cos и другие стандартные реализации функции косинуса в этой задаче запрещается.
  */
-fun cos(x: Double, eps: Double): Double = TODO()
+fun cos(x: Double, eps: Double): Double {
+    var X = x % (PI * 2)
+    var znak = 1
+    var s = 1.0
+    var pow = 0
+    var result = 0.0
+    while (Math.abs(s) - eps > 0) {
+        znak *= -1
+        pow += 2
+        result += s
+        s = znak * Math.pow(X, pow.toDouble()) / factorial(pow)
+    }
+    return result
+}
 
 /**
  * Сложная (4 балла)
