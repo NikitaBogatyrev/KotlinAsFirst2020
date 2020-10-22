@@ -243,8 +243,6 @@ fun isPalindrome(n: Int): Boolean = TODO()
  */
 fun hasDifferentDigits(n: Int): Boolean {
     var nn = n
-    var chet1 = 1
-    var chet2 = 0
     if (nn == 0 || nn == 1 || nn == 2 || nn == 3 || nn == 4 || nn == 5 || nn == 6 || nn == 7 || nn == 8 || nn == 0) return false
     while (nn > 9) {
         if ((nn % 10) == (nn / 10 % 10)) nn /= 10
