@@ -314,7 +314,61 @@ fun decimalFromString(str: String, base: Int): Int = TODO()
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
-fun roman(n: Int): String = TODO()
+fun roman(n: Int): String {
+    var nn = n
+    var i = 10
+    var q = 0
+    var list = mutableListOf<String>()
+    while (nn > 0) {
+        q = nn % i
+        nn /= i
+        nn *= i
+        i *= 10
+        if (q != 0) {
+            list.add(q.toString())
+        }
+    }
+    list.reverse()
+    for (i in 0 until list.size) {
+        if (list[i] == "1") list[i] = "I"
+        if (list[i] == "2") list[i] = "II"
+        if (list[i] == "3") list[i] = "II"
+        if (list[i] == "4") list[i] = "IV"
+        if (list[i] == "5") list[i] = "V"
+        if (list[i] == "6") list[i] = "VI"
+        if (list[i] == "7") list[i] = "VII"
+        if (list[i] == "8") list[i] = "VIII"
+        if (list[i] == "9") list[i] = "IX"
+        if (list[i] == "10") list[i] = "X"
+        if (list[i] == "20") list[i] = "XX"
+        if (list[i] == "30") list[i] = "XXX"
+        if (list[i] == "40") list[i] = "XL"
+        if (list[i] == "50") list[i] = "L"
+        if (list[i] == "60") list[i] = "LX"
+        if (list[i] == "70") list[i] = "LXX"
+        if (list[i] == "80") list[i] = "LXXX"
+        if (list[i] == "90") list[i] = "XC"
+        if (list[i] == "100") list[i] = "C"
+        if (list[i] == "200") list[i] = "CC"
+        if (list[i] == "300") list[i] = "CCC"
+        if (list[i] == "400") list[i] = "CD"
+        if (list[i] == "500") list[i] = "D"
+        if (list[i] == "600") list[i] = "DC"
+        if (list[i] == "700") list[i] = "DCC"
+        if (list[i] == "800") list[i] = "DCCC"
+        if (list[i] == "900") list[i] = "CM"
+        if (list[i] == "1000") list[i] = "M"
+        if (list[i] == "2000") list[i] = "MM"
+        if (list[i] == "3000") list[i] = "MMM"
+    }
+    return list.joinToString(
+        separator = ""
+    )
+}
+
+
+
+
 
 /**
  * Очень сложная (7 баллов)
