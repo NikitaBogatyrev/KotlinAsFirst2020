@@ -332,7 +332,7 @@ fun roman(n: Int): String {
     for (i in 0 until list.size) {
         if (list[i] == "1") list[i] = "I"
         if (list[i] == "2") list[i] = "II"
-        if (list[i] == "3") list[i] = "II"
+        if (list[i] == "3") list[i] = "III"
         if (list[i] == "4") list[i] = "IV"
         if (list[i] == "5") list[i] = "V"
         if (list[i] == "6") list[i] = "VI"
