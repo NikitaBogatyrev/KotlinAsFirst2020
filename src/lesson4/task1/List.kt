@@ -3,6 +3,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import kotlin.math.abs
 import kotlin.math.sqrt
 
 // Урок 4: списки
@@ -223,7 +224,20 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
  * Результат разложения вернуть в виде списка множителей, например 75 -> (3, 5, 5).
  * Множители в списке должны располагаться по возрастанию.
  */
-fun factorize(n: Int): List<Int> = TODO()
+fun factorize(n: Int): List<Int> {
+    var i = 1
+    var nn = n
+    var list = mutableListOf<Int>()
+    while (nn > 1) {
+        i++
+        if (nn % i == 0) {
+            nn /= i
+            list = (list + abs(i)).toMutableList()
+        }
+
+    }
+    return list.sorted()
+}
 
 /**
  * Сложная (4 балла)
