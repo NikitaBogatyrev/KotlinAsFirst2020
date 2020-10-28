@@ -74,7 +74,36 @@ fun main() {
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30.02.2009) считается неверными
  * входными данными.
  */
-fun dateStrToDigit(str: String): String = TODO()
+fun dateStrToDigit(str: String): String {
+    var list = listOf<String>(
+        "января", "февраля", "марта",
+        "апреля", "мая", "июня", "июля", "августа", "сентября",
+        "октября", "ноября", "декабря"
+    )
+    var day = 0
+    var month = 0
+    var year = 0
+    val t = 0
+    val data = str.split(" ")
+    if (data.size < 3) return String.format("")
+    try {
+        day = data[0].toInt()
+        month = list.indexOf(data[1]) + 1
+        year = data[2].toInt()
+        if (month == 0) return String.format("")
+        if ((month == 2 && day <= 28) || (month % 2 == 0 && day <= 30 && month != 2) || (month % 2 == 1 && day <= 31)) {
+            if (day > 9 && month < 10) return String.format("%d.%02d.%d", day, month, year)
+            if (day > 9 && month > 9) return String.format("%d.%d.%d", day, month, year)
+            if (day < 10 && month < 10) return String.format("%02d.%02d.%d", day, month, year)
+            if (day < 10 && month > 9) return String.format("%02d.%d.%d", day, month, year)
+
+        }
+    } catch (e: NumberFormatException) {
+        return String.format("")
+    }
+    return String.format("")
+}
+
 
 /**
  * Средняя (4 балла)
