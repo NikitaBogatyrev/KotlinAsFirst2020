@@ -145,7 +145,7 @@ fun dateDigitToStr(digital: String): String {
         day = data[0].toInt()
         month = data[1].toInt()
         year = data[2].toInt()
-        if (month == 0) return String.format("")
+        if (month < 1 || month > 12) return String.format("")
         var a = month - 1
         var month1 = list[a]
         if (data.size < 3 || data.size > 3) return String.format("")
