@@ -115,20 +115,8 @@ fun minDivisor(n: Int): Int {
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int {
-    var i = 1
-    var q = 1
-    if (n % 2 == 0) i = n / 2
-    else {
-        for (m in 3 until n step 2) {
-            if (n % m == 0 && m > q) {
-                q = m
-                i = m
-            } else i = q
-        }
-    }
-    return i
-}
+fun maxDivisor(n: Int): Int = TODO()
+
 
 /**
  * Простая (2 балла)
@@ -291,16 +279,16 @@ fun hasDifferentDigits(n: Int): Boolean {
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
 fun sin(x: Double, eps: Double): Double {
-    var X = x % (PI * 2)
+    val xx = x % (PI * 2)
     var znak = 1
-    var s = X
+    var s = xx
     var pow = 1
     var result = 0.0
     while (Math.abs(s) - eps > 0) {
         znak *= -1
         pow += 2
         result += s
-        s = znak * Math.pow(X, pow.toDouble()) / factorial(pow)
+        s = znak * Math.pow(xx, pow.toDouble()) / factorial(pow)
     }
     return result
 }
