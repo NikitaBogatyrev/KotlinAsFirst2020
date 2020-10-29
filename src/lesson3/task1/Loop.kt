@@ -101,7 +101,7 @@ fun minDivisor(n: Int): Int {
     var i = 0
     if (n % 2 == 0) i = 2
     else {
-        for (m in 3 until n step 2) {
+        for (m in 3..sqrt(n.toDouble()).toInt() step 2) {
             if (n % m == 0) return m
             else i = n
         }
