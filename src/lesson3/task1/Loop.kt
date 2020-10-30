@@ -221,7 +221,7 @@ fun revert(n: Int): Int {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun isPalindrome(n: Int): Boolean {
-    var N = n
+    var nnn = n
     var chet = 1
     var i = 1
     var nn = n
@@ -231,18 +231,18 @@ fun isPalindrome(n: Int): Boolean {
         nn /= 10
     }
     if (chet % 2 == 0) {
-        while (N > 0) {
-            if (N % 10 == N / i) {
-                N %= i
-                N /= 10
+        while (nnn > 0) {
+            if (nnn % 10 == nnn / i) {
+                nnn %= i
+                nnn /= 10
                 i /= 100
             } else return false
         }
     } else {
-        while (N > 9) {
-            if (N % 10 == N / i) {
-                N %= i
-                N /= 10
+        while (nnn > 9) {
+            if (nnn % 10 == nnn / i) {
+                nnn %= i
+                nnn /= 10
                 i /= 100
             } else return false
         }
@@ -303,7 +303,7 @@ fun sin(x: Double, eps: Double): Double {
  * Использовать kotlin.math.cos и другие стандартные реализации функции косинуса в этой задаче запрещается.
  */
 fun cos(x: Double, eps: Double): Double {
-    var X = x % (PI * 2)
+    var xx = x % (PI * 2)
     var znak = 1
     var s = 1.0
     var pow = 0
@@ -312,7 +312,7 @@ fun cos(x: Double, eps: Double): Double {
         znak *= -1
         pow += 2
         result += s
-        s = znak * Math.pow(X, pow.toDouble()) / factorial(pow)
+        s = znak * Math.pow(xx, pow.toDouble()) / factorial(pow)
     }
     return result
 }
