@@ -105,7 +105,8 @@ fun dateStrToDigit(str: String): String {
         if ((year % 4 != 0) || (year % 100 == 0 && year % 400 != 0)) {
             if ((month == 2 && day <= 28) || ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
                 || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8)
-                        || (month == 10) || (month == 12)) && day <= 31))) {
+                        || (month == 10) || (month == 12)) && day <= 31))
+            ) {
                 if (day > 9 && month < 10) return String.format("%d.%02d.%d", day, month, year)
                 if (day > 9 && month > 9) return String.format("%d.%d.%d", day, month, year)
                 if (day < 10 && month < 10) return String.format("%02d.%02d.%d", day, month, year)
@@ -141,7 +142,8 @@ fun dateDigitToStr(digital: String): String {
         var list = listOf<String>(
             "января", "февраля", "марта",
             "апреля", "мая", "июня", "июля", "августа", "сентября",
-            "октября", "ноября", "декабря")
+            "октября", "ноября", "декабря"
+        )
         day = data[0].toInt()
         month = data[1].toInt()
         year = data[2].toInt()
@@ -159,7 +161,8 @@ fun dateDigitToStr(digital: String): String {
         if ((year % 4 != 0) || (year % 100 == 0 && year % 400 != 0)) {
             if ((month == 2 && day <= 28) || ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
                 || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8)
-                        || (month == 10) || (month == 12)) && day <= 31))) return String.format("%d %s %d", day, month1, year)
+                        || (month == 10) || (month == 12)) && day <= 31))
+            ) return String.format("%d %s %d", day, month1, year)
             else String.format("")
         }
     } catch (e: NumberFormatException) {
@@ -195,7 +198,20 @@ fun flattenPhoneNumber(phone: String): String = TODO()
  * Прочитать строку и вернуть максимальное присутствующее в ней число (717 в примере).
  * При нарушении формата входной строки или при отсутствии в ней чисел, вернуть -1.
  */
-fun bestLongJump(jumps: String): Int = TODO()
+fun bestLongJump(jumps: String): Int {
+    val jump = jumps.split(" ")
+    var qq = -1
+    try {
+        for (i in jump.indices) {
+            if (jump[i] != "-" && jump[i] != "%") {
+                if (qq < jump[i].toInt()) qq = jump[i].toInt()
+            }
+        }
+        return qq
+    } catch (e: NumberFormatException) {
+        return -1
+    }
+}
 
 /**
  * Сложная (6 баллов)
@@ -231,6 +247,7 @@ fun plusMinus(expression: String): Int = TODO()
  * Пример: "Он пошёл в в школу" => результат 9 (индекс первого 'в')
  */
 fun firstDuplicateIndex(str: String): Int = TODO()
+
 
 /**
  * Сложная (6 баллов)
