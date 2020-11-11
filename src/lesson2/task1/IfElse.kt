@@ -108,8 +108,8 @@ fun whichRookThreatens(
     val winRook2 = (kingX == rookX2 || kingY == rookY2)
     return when {
         !winRook1 && !winRook2 -> 0
-        winRook1 && !winRook2 -> 1
-        winRook2 && !winRook1 -> 2
+        !winRook2 -> 1
+        !winRook1 -> 2
         else -> 3
     }
 }
