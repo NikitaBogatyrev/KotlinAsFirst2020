@@ -61,21 +61,14 @@ fun circleInside(
  * Вернуть true, если кирпич пройдёт
  */
 fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
-    var aa = a
-    var bb = b
-    if (c in a..b) {
-        bb = c
+    val aa = minOf(a, b)
+    if (aa == a) {
+        var bb = minOf(b, c)
+        if ((aa <= s && bb <= r) || (aa <= r && bb <= s)) return true
+    } else {
+        var bb = minOf(a, c)
+        if ((aa <= s && bb <= r) || (aa <= r && bb <= s)) return true
     }
-    if (c in b..a) {
-        aa = c
-    }
-    if (c <= a && c <= b && a <= b) {
-        bb = c
-    }
-    if (c <= a && c <= b && b <= a) {
-        aa = c
-    }
-    if ((aa <= s && bb <= r) || (aa <= r && bb <= s)) return true
     return false
 }
 
