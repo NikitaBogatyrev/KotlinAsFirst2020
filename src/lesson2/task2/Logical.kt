@@ -63,10 +63,10 @@ fun circleInside(
 fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
     val aa = minOf(a, b)
     if (aa == a) {
-        var bb = minOf(b, c)
+        val bb = minOf(b, c)
         if ((aa <= s && bb <= r) || (aa <= r && bb <= s)) return true
     } else {
-        var bb = minOf(a, c)
+        val bb = minOf(a, c)
         if ((aa <= s && bb <= r) || (aa <= r && bb <= s)) return true
     }
     return false
