@@ -63,11 +63,20 @@ fun circleInside(
 fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
     var aa = a
     var bb = b
-    if (c <= a) aa = c
-    if (c <= b) bb = c
+    if (c in a..b) {
+        bb = c
+    }
+    if (c in b..a) {
+        aa = c
+    }
+    if (c <= a && c <= b && a <= b) {
+        bb = c
+    }
+    if (c <= a && c <= b && b <= a) {
+        aa = c
+    }
     if ((aa <= s && bb <= r) || (aa <= r && bb <= s)) return true
     return false
-
 }
 
 
