@@ -65,8 +65,7 @@ fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
     var bb = b
     if (aa == a) bb = minOf(b, c)
     if (aa == b) bb = minOf(a, c)
-    if ((aa <= s && bb <= r) || (aa <= r && bb <= s)) return true
-    return false
+    return (aa <= s && bb <= r) || (aa <= r && bb <= s)
 }
 
 

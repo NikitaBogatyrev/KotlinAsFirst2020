@@ -191,7 +191,29 @@ fun bestHighJump(jumps: String): Int = TODO()
  * Вернуть значение выражения (6 для примера).
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
-fun plusMinus(expression: String): Int = TODO()
+fun plusMinus(expression: String): Int {
+    val jump = expression.split(" ")
+    var sum = 0
+    var sumMinus = 0
+    for (i in jump.indices) {
+        if ((jump.size == 2) || (jump[i] == "+" && jump[i + 1] == "+") ||
+            (jump[i] == "-" && jump[i + 1] == "-") ||
+            (jump[i] == "+" && jump[i + 1] == "-") ||
+            (jump[i] == "-" && jump[i + 1] == "+") || (jump[i] == "-" && jump[i + 1].toInt() < 0))
+            throw IllegalArgumentException("")
+        if (jump[i] != "-" && jump[i] != "+") {
+            sum += jump[i].toInt()
+        }
+    }
+    for (i in jump.indices) {
+        if (jump[i] == "-") {
+            jump[i + 1].toInt()
+            sumMinus += jump[i + 1].toInt()
+        }
+    }
+    sum -= sumMinus * 2
+    return sum
+}
 
 /**
  * Сложная (6 баллов)
@@ -203,7 +225,6 @@ fun plusMinus(expression: String): Int = TODO()
  * Пример: "Он пошёл в в школу" => результат 9 (индекс первого 'в')
  */
 fun firstDuplicateIndex(str: String): Int = TODO()
-
 
 /**
  * Сложная (6 баллов)
