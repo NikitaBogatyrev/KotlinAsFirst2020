@@ -110,8 +110,7 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
  */
 fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
     val sum = b + a
-    if (sum == b) return true
-    return false
+    return sum == b
 }
 
 
