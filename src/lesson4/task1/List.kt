@@ -135,12 +135,10 @@ fun abs(v: List<Double>): Double {
  */
 fun mean(list: List<Double>): Double {
     var a = 0.0
-    var k = 0.0
+    var k = 0
     if (list.isEmpty()) return 0.0
-    for (element in list) {
-        a += element
-        k++
-    }
+    a = list.sum()
+    k = list.size
     return a / k
 }
 
@@ -153,15 +151,9 @@ fun mean(list: List<Double>): Double {
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
 fun center(list: MutableList<Double>): MutableList<Double> {
-    var sum = 0.0
-    var chet = 0.0
+    val t = mean(list)
     for (i in 0 until list.size) {
-        sum += list[i]
-        chet++
-    }
-    val theArithmeticMean = sum / chet
-    for (i in 0 until list.size) {
-        list[i] -= theArithmeticMean
+        list[i] -= t
     }
     return list
 }
@@ -226,7 +218,7 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
 fun factorize(n: Int): List<Int> {
     var i = 2
     var nn = n
-    var list = mutableListOf<Int>()
+    val list = mutableListOf<Int>()
     while (nn > 1) {
         if (nn % i == 0) {
             nn /= i
@@ -245,17 +237,8 @@ fun factorize(n: Int): List<Int> {
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
 fun factorizeToString(n: Int): String {
-    var i = 2
-    var nn = n
-    var list = mutableListOf<Int>()
-    while (nn > 1) {
-        if (nn % i == 0) {
-            nn /= i
-            list.add(i)
-        } else i++
-
-    }
-    return list.joinToString(
+    val t = factorize(n)
+    return t.joinToString(
         separator = "*"
     )
 }
@@ -318,7 +301,7 @@ fun roman(n: Int): String {
     var nn = n
     var i = 10
     var q = 0
-    var list = mutableListOf<String>()
+    val list = mutableListOf<String>()
     while (nn > 0) {
         q = nn % i
         nn /= i
