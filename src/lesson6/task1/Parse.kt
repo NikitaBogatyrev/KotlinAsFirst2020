@@ -93,9 +93,9 @@ fun dateDigitToStr(digital: String): String {
     var year = 0
     val t = 0
     val data = digital.split(".")
-    if (data.size < 3) return String.format("")
+    if (data.size < 3) return ("")
     try {
-        var list = listOf<String>(
+        val list = listOf(
             "января", "февраля", "марта",
             "апреля", "мая", "июня", "июля", "августа", "сентября",
             "октября", "ноября", "декабря"
@@ -104,22 +104,20 @@ fun dateDigitToStr(digital: String): String {
         month = data[1].toInt()
         year = data[2].toInt()
         if (month < 1 || month > 12) return String.format("")
-        var a = month - 1
-        var month1 = list[a]
+        val a = month - 1
+        val month1 = list[a]
         if (data.size < 3 || data.size > 3) return String.format("")
         if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
             if ((month == 2 && day <= 29) || ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
                 || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||
                         (month == 10) || (month == 12)) && day <= 31))
             ) return String.format("%d %s %d", day, month1, year)
-            else String.format("")
         }
         if ((year % 4 != 0) || (year % 100 == 0 && year % 400 != 0)) {
             if ((month == 2 && day <= 28) || ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
                 || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8)
                         || (month == 10) || (month == 12)) && day <= 31))
             ) return String.format("%d %s %d", day, month1, year)
-            else String.format("")
         }
     } catch (e: NumberFormatException) {
         return String.format("")
@@ -157,15 +155,15 @@ fun flattenPhoneNumber(phone: String): String = TODO()
 fun bestLongJump(jumps: String): Int {
     val jump = jumps.split(" ")
     var qq = -1
-    try {
+    return try {
         for (i in jump.indices) {
             if (jump[i] != "-" && jump[i] != "%") {
                 if (qq < jump[i].toInt()) qq = jump[i].toInt()
             }
         }
-        return qq
+        qq
     } catch (e: NumberFormatException) {
-        return -1
+        -1
     }
 }
 
