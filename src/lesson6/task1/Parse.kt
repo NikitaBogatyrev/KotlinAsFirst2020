@@ -93,7 +93,7 @@ fun dateDigitToStr(digital: String): String {
     var year = 0
     val t = 0
     val data = digital.split(".")
-    if (data.size < 3) return ("")
+    if (data.size != 3) return ""
     try {
         val list = listOf(
             "января", "февраля", "марта",
@@ -103,10 +103,9 @@ fun dateDigitToStr(digital: String): String {
         day = data[0].toInt()
         month = data[1].toInt()
         year = data[2].toInt()
-        if (month < 1 || month > 12) return String.format("")
+        if (month < 1 || month > 12) return ""
         val a = month - 1
         val month1 = list[a]
-        if (data.size < 3 || data.size > 3) return String.format("")
         if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
             if ((month == 2 && day <= 29) || ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
                 || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||
@@ -120,9 +119,9 @@ fun dateDigitToStr(digital: String): String {
             ) return String.format("%d %s %d", day, month1, year)
         }
     } catch (e: NumberFormatException) {
-        return String.format("")
+        return ""
     }
-    return String.format("")
+    return ""
 }
 
 
