@@ -181,7 +181,7 @@ fun bestHighJump(jumps: String): Int {
     var qq = -1
     return try {
         for (i in jump.indices) {
-            if (jump[i].contains(Regex("""\d""")) && jump[i+1].contains(Regex("""\+"""))) {
+            if (jump[i].contains(Regex("""\d""")) && jump[i + 1].contains(Regex("""\+"""))) {
                 if (qq < jump[i].toInt()) qq = jump[i].toInt()
             }
         }
