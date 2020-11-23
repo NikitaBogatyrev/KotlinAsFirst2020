@@ -175,8 +175,21 @@ fun bestLongJump(jumps: String): Int {
  * При нарушении формата входной строки, а также в случае отсутствия удачных попыток,
  * вернуть -1.
  */
-fun bestHighJump(jumps: String): Int = TODO()
-
+fun bestHighJump(jumps: String): Int {
+    val regex = Regex("""- | % | \+ | \d""") ?: return -1
+    val jump = jumps.split(" ")
+    var qq = -1
+    return try {
+        for (i in jump.indices) {
+            if (jump[i].contains(Regex("""\d""")) && jump[i+1].contains(Regex("""\+"""))) {
+                if (qq < jump[i].toInt()) qq = jump[i].toInt()
+            }
+        }
+        return qq
+    } catch (e: NumberFormatException) {
+        -1
+    }
+}
 /**
  * Сложная (6 баллов)
  *
