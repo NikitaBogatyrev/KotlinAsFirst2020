@@ -218,6 +218,7 @@ fun plusMinus(expression: String): Int {
             (jump[i] == "-" && jump[i + 1] == "-") ||
             (jump[i] == "+" && jump[i + 1] == "-") ||
             (jump[i] == "-" && jump[i + 1] == "+") || (jump[i] == "-" && jump[i + 1].toInt() < 0)
+            || (jump[i].contains(Regex("""\+\d""")))
         )
             throw IllegalArgumentException("")
         if (jump[i] != "-" && jump[i] != "+") {
