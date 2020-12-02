@@ -87,6 +87,26 @@ fun dateStrToDigit(str: String): String = TODO()
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30 февраля 2009) считается неверными
  * входными данными.
  */
+fun daysInMonth(day: Int, month: Int, year: Int): String {
+    try {
+        val list = listOf(
+            "января", "февраля", "марта",
+            "апреля", "мая", "июня", "июля", "августа", "сентября",
+            "октября", "ноября", "декабря"
+        )
+        val a = month - 1
+        val month1 = list[a]
+        if (((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
+            || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||
+                    (month == 10) || (month == 12)) && day <= 31))
+        )
+            return String.format("%d %s %d", day, month1, year)
+    } catch (e: NumberFormatException) {
+        return ""
+    }
+    return ""
+}
+
 fun dateDigitToStr(digital: String): String {
     var day = 0
     var month = 0
@@ -94,32 +114,21 @@ fun dateDigitToStr(digital: String): String {
     val t = 0
     val data = digital.split(".")
     if (data.size != 3) return ""
-    try {
-        val list = listOf(
-            "января", "февраля", "марта",
-            "апреля", "мая", "июня", "июля", "августа", "сентября",
-            "октября", "ноября", "декабря"
-        )
+    return try {
         day = data[0].toInt()
         month = data[1].toInt()
         year = data[2].toInt()
         if (month < 1 || month > 12) return ""
-        val a = month - 1
-        val month1 = list[a]
         if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-            if (month == 2 && day <= 29) return String.format("%d %s %d", day, month1, year)
+            if (month == 2 && day <= 29) return String.format("%d %s %d", day, "февраля", year)
         }
         if ((year % 4 != 0) || (year % 100 == 0 && year % 400 != 0)) {
-            if (month == 2 && day <= 28) return String.format("%d %s %d", day, month1, year)
+            if (month == 2 && day <= 28) return String.format("%d %s %d", day, "февраля", year)
         }
-        if (((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
-            || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||
-                    (month == 10) || (month == 12)) && day <= 31)))
-            return String.format("%d %s %d", day, month1, year)
+        daysInMonth(day, month, year)
     } catch (e: NumberFormatException) {
-        return ""
+        ""
     }
-    return ""
 }
 
 
@@ -190,6 +199,7 @@ fun bestHighJump(jumps: String): Int {
         -1
     }
 }
+
 /**
  * Сложная (6 баллов)
  *
@@ -199,7 +209,30 @@ fun bestHighJump(jumps: String): Int {
  * Вернуть значение выражения (6 для примера).
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
-fun plusMinus(expression: String): Int = TODO()
+fun plusMinus(expression: String): Int {
+    val jump = expression.split(" ")
+    var sum = 0
+    var sumMinus = 0
+    for (i in jump.indices) {
+        if ((jump.size == 2) || (jump[i] == "+" && jump[i + 1] == "+") ||
+            (jump[i] == "-" && jump[i + 1] == "-") ||
+            (jump[i] == "+" && jump[i + 1] == "-") ||
+            (jump[i] == "-" && jump[i + 1] == "+") || (jump[i] == "-" && jump[i + 1].toInt() < 0)
+        )
+            throw IllegalArgumentException("")
+        if (jump[i] != "-" && jump[i] != "+") {
+            sum += jump[i].toInt()
+        }
+    }
+    for (i in jump.indices) {
+        if (jump[i] == "-") {
+            jump[i + 1].toInt()
+            sumMinus += jump[i + 1].toInt()
+        }
+    }
+    sum -= sumMinus * 2
+    return sum
+}
 
 /**
  * Сложная (6 баллов)
@@ -224,6 +257,7 @@ fun firstDuplicateIndex(str: String): Int = TODO()
  * Все цены должны быть больше нуля либо равны нулю.
  */
 fun mostExpensive(description: String): String = TODO()
+
 
 /**
  * Сложная (6 баллов)
