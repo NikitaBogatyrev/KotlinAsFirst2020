@@ -306,9 +306,11 @@ fun roman(n: Int): String {
     }
     while (qq != 0) {
         var t = qq / result * result
-        list.add(t.toString())
-        qq -= t
-        result /= 10
+        if (t / result != 0) {
+            list.add(t.toString())
+            qq -= t
+            result /= 10
+        }
     }
     for (i in 0 until list.size) {
         if (list[i] == "1") list[i] = "I"
