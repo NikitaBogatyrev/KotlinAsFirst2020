@@ -216,8 +216,9 @@ fun plusMinus(expression: String): Int {
     for (i in jump.indices) {
         if ((jump.size == 2) || (jump[i].contains(Regex("""(\+ | \-)\s(\+ | \-)"""))) ||
             (jump[i].contains(Regex("""\-\d"""))) ||
-            (jump[i].contains(Regex("""\+\d""")))
-            || (jump[0] == "+" || jump[0] == "-")) throw IllegalArgumentException("")
+            (jump[i].contains(Regex("""\+\d"""))) ||
+            (jump[0] == "+" || jump[0] == "-") ||
+            (jump[i].contains(Regex("""\d\s\d""")))) throw IllegalArgumentException("")
         if (jump[i] != "-" && jump[i] != "+") {
             sum += jump[i].toInt()
         }
