@@ -296,20 +296,20 @@ fun decimalFromString(str: String, base: Int): Int = TODO()
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
 fun roman(n: Int): String {
-    var nn = n
-    var i = 10
-    var q = 0
+    var q = n
+    var qq = n
+    var result = 1
     val list = mutableListOf<String>()
-    while (nn > 0) {
-        q = nn % i
-        nn /= i
-        nn *= i
-        i *= 10
-        if (q != 0) {
-            list.add(q.toString())
-        }
+    while (q > 9) {
+        q /= 10
+        result *= 10
     }
-    list.reverse()
+    while (qq != 0) {
+        var t = qq / result * result
+        list.add(t.toString())
+        qq -= t
+        result /= 10
+    }
     for (i in 0 until list.size) {
         if (list[i] == "1") list[i] = "I"
         if (list[i] == "2") list[i] = "II"
@@ -346,10 +346,6 @@ fun roman(n: Int): String {
         separator = ""
     )
 }
-
-
-
-
 
 /**
  * Очень сложная (7 баллов)
