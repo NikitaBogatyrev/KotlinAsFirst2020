@@ -69,7 +69,7 @@ fun deleteMarked(inputName: String, outputName: String) {
         if (line.isEmpty()) writer.newLine()
         else if (line[0] != '_') {
             writer.write(line)
-            writer.newLine ()
+            writer.newLine()
         }
     }
     writer.close()
@@ -85,7 +85,6 @@ fun deleteMarked(inputName: String, outputName: String) {
  *
  */
 fun countSubstrings(inputName: String, substrings: List<String>): Map<String, Int> = TODO()
-
 
 /**
  * Средняя (12 баллов)
