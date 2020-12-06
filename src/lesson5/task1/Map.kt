@@ -142,7 +142,10 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
             if (a[i] == b[i]) c.add(a[i])
     }
     val cc = mutableListOf<String>()
-    for (item in c) cc.add(item)
+    for (item in c) {
+        if (item.isEmpty()) return cc
+        cc.add(item)
+    }
     return cc
 }
 
