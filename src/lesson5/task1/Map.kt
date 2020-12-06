@@ -85,7 +85,6 @@ fun buildWordSet(text: List<String>): MutableSet<String> {
     return res
 }
 
-
 /**
  * Простая (2 балла)
  *
@@ -113,7 +112,6 @@ fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
     return sum == b
 }
 
-
 /**
  * Простая (2 балла)
  *
@@ -138,7 +136,14 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Map<Strin
  * т. е. whoAreInBoth(listOf("Марат", "Семён, "Марат"), listOf("Марат", "Марат")) == listOf("Марат")
  */
 fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
-    TODO()
+    val c = mutableSetOf<String>()
+    for (i in a.indices) {
+        for (i in b.indices)
+            if (a[i] == b[i]) c.add(a[i])
+    }
+    val cc = mutableListOf<String>()
+    for (item in c) cc.add(item)
+    return cc
 }
 
 /**
