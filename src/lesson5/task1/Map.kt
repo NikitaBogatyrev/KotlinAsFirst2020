@@ -145,7 +145,11 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
     for (item in c) {
         cc.add(item)
     }
-    if (cc.isEmpty() && a.isNotEmpty() && b.isNotEmpty()) return listOf("")
+    for (i in a.indices) {
+        for (i in b.indices) {
+            if (cc.isEmpty() && a[i] == "" && b[i] == "") return listOf("")
+        }
+    }
     return cc
 }
 
