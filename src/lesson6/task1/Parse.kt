@@ -88,22 +88,19 @@ fun dateStrToDigit(str: String): String = TODO()
  * входными данными.
  */
 fun daysInMonth(day: Int, month: Int, year: Int): String {
-    try {
-        val list = listOf(
-            "января", "февраля", "марта",
-            "апреля", "мая", "июня", "июля", "августа", "сентября",
-            "октября", "ноября", "декабря"
-        )
-        val a = month - 1
-        val month1 = list[a]
-        if (((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
-            || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||
-                    (month == 10) || (month == 12)) && day <= 31))
-        )
-            return String.format("%d %s %d", day, month1, year)
-    } catch (e: NumberFormatException) {
-        return ""
-    }
+    val list = listOf(
+        "января", "февраля", "марта",
+        "апреля", "мая", "июня", "июля", "августа", "сентября",
+        "октября", "ноября", "декабря"
+    )
+    val a = month - 1
+    val month1 = list[a]
+    if (((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30)
+        || (((month == 1 || (month == 3) || (month == 5) || (month == 7) || (month == 8) ||
+                (month == 10) || (month == 12)) && day <= 31))
+    )
+        return String.format("%d %s %d", day, month1, year)
+
     return ""
 }
 
@@ -218,7 +215,8 @@ fun plusMinus(expression: String): Int {
             (jump[i].contains(Regex("""\-\d"""))) ||
             (jump[i].contains(Regex("""\+\d"""))) ||
             (jump[0] == "+" || jump[0] == "-") ||
-            (jump[i].contains(Regex("""\d\s\d""")))) throw IllegalArgumentException("")
+            (jump[i].contains(Regex("""\d\s\d""")))
+        ) throw IllegalArgumentException("")
         if (jump[i] != "-" && jump[i] != "+") {
             sum += jump[i].toInt()
         }
