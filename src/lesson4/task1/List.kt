@@ -319,4 +319,254 @@ fun roman(n: Int): String {
  * Например, 375 = "триста семьдесят пять",
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
-fun russian(n: Int): String = TODO()
+fun russian(n: Int): String {
+    val unit = listOf(
+        "один", "два", "три", "четыре", "пять",
+        "шесть", "семь", "восемь", "девять"
+    )
+    val unit1 = listOf(
+        "одна", "две", "три", "четыре", "пять",
+        "шесть", "семь", "восемь", "девять"
+    )
+    val ten = listOf(
+        "десять", "двадцать", "тридцать", "сорок", "пятьдесяи",
+        "шестьдесят", "семьдесят", "восемьдесят", "девяносто"
+    )
+    val eleven = listOf(
+        "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать",
+        "шестьнадцать", "семьнадцать", "восемьнадцать", "девятнадцать"
+    )
+    val hundred = listOf(
+        "сто", "двести", "триста", "четыреста", "пятьсот",
+        "шестьсот", "семьсот", "восемьсот", "девятьсот"
+    )
+    var string = ""
+    if (n < 10) return unit[n - 1]
+    if (n in 11..19) return eleven[n - 11]
+    if (n in 10..90 && n % 10 == 0) return ten[n / 10 - 1]
+    if (n in 11..99) {
+        val q = n / 10 * 10
+        string += ten[q / 10 - 1]
+        string += " "
+        string += unit[n % 10 - 1]
+        return string
+    }
+    if (n in 100..999) {
+        string += hundred[n / 100 - 1]
+        if (n / 10 % 10 != 0) {
+            val q = n / 10 % 10 * 10
+            string += " "
+            string += ten[q / 10 - 1]
+        }
+        if (n % 10 != 0) {
+            string += " "
+            string += unit[n % 10 - 1]
+        }
+        return string
+    }
+    if (n in 1000..9999) {
+        if (n / 1000 == 1) string += "одна тысяча"
+        if (n / 1000 == 2) string += "две тысячи"
+        if (n / 1000 != 1) {
+            if (n / 1000 in 3..4) {
+                string += unit[n / 1000 - 1]
+                string += " "
+                string += "тысячи"
+            }
+            if (n / 100 in 5..9) {
+                string += unit[n / 1000 - 1]
+                string += " "
+                string += "тысяч"
+            }
+        }
+        if (n / 100 % 10 != 0) {
+            val q = n / 100 % 10 * 100
+            string += " "
+            string += hundred[q / 100 - 1]
+        }
+        if (n / 10 % 10 != 0 && n / 10 % 10 * 10 !in 11..19) {
+            val q = n / 10 % 10 * 10
+            string += " "
+            string += ten[q / 10 - 1]
+        }
+        if (n / 10 % 10 != 0 && n / 10 % 10 * 10 in 11..19) {
+            val q = n / 10 % 10 * 10
+            string += " "
+            string += eleven[q - 11]
+        }
+        if (n % 10 != 0) {
+            string += " "
+            string += unit[n % 10 - 1]
+        }
+        return string
+    }
+    if (n in 10000..99999) {
+        val q = n / 1000
+        if (q in 11..19) {
+            string += eleven[q - 11]
+            string += " "
+            string += "тысяч"
+        }
+        if (q in 10..90 && q % 10 == 0) {
+            string += ten[q / 10 - 1]
+            string += " "
+            string += "тысяч"
+        }
+        if (q in 21..99 && q % 10 != 0) {
+            val qqq = q / 10 * 10
+            string += ten[qqq / 10 - 1]
+            string += " "
+            string += unit1[q % 10 - 1]
+            string += " "
+            if (q % 10 == 1) string += "тысяча"
+            if (q % 10 in 2..4) string += "тысячи"
+            if (q % 10 in 5..9) string += "тысяч"
+        }
+        if (n / 100 % 10 != 0) {
+            if (n % 1000 in 100..999) {
+                string += " "
+                string += hundred[n % 1000 / 100 - 1]
+                val t = n % 100
+                if (t < 10 && t != 0) {
+                    string += " "
+                    string += unit[t - 1]
+                }
+                if (t in 11..19) {
+                    string += " "
+                    string += eleven[t - 11]
+                }
+                if (t in 10..90 && t % 10 == 0) {
+                    string += " "
+                    string += ten[t / 10 - 1]
+                }
+                if (t in 21..99 && t % 10 != 0) {
+                    val q = t / 10 * 10
+                    string += " "
+                    string += ten[q / 10 - 1]
+                    string += " "
+                    string += unit[t % 10 - 1]
+                }
+            }
+        }
+        if (n / 100 % 10 == 0) {
+            val t = n % 100
+            if (t < 10 && t != 0) {
+                string += " "
+                string += unit[t - 1]
+            }
+            if (t in 11..19) {
+                string += " "
+                string += eleven[t - 11]
+            }
+            if (t in 10..90 && t % 10 == 0) {
+                string += " "
+                string += ten[t / 10 - 1]
+            }
+            if (t in 21..99 && t % 10 != 0) {
+                val q = t / 10 * 10
+                string += " "
+                string += ten[q / 10 - 1]
+                string += " "
+                string += unit[t % 10 - 1]
+            }
+        }
+        return string
+    }
+    if (n in 100000..999999) {
+        string += hundred[n / 1000 / 100 - 1]
+        if (n / 1000 % 10 == 0 && n / 10000 % 10 == 0) {
+            string += " "
+            string += "тысяч"
+        }
+        val t = n / 1000 % 100
+        if (t < 10 && t != 0) {
+            string += " "
+            string += unit[t - 1]
+            if (t == 1) {
+                string += " "
+                string += "тысяча"
+            }
+            if (t in 2..4) {
+                string += " "
+                string += "тысячи"
+            }
+            if (t in 5..9) {
+                string += " "
+                string += "тысяч"
+            }
+        }
+        if (t in 11..19) {
+            string += " "
+            string += eleven[t - 11]
+            string += " "
+            string += "тысяч"
+        }
+        if (t in 10..90 && t % 10 == 0) {
+            string += " "
+            string += ten[t / 10 - 1]
+            string += " "
+            string += "тысяч"
+        }
+        if (t in 21..99 && t % 10 != 0) {
+            val q = t / 10 * 10
+            string += " "
+            string += ten[q / 10 - 1]
+            string += " "
+            string += unit[t % 10 - 1]
+            string += " "
+            if (t % 10 == 1) string += "тысяча"
+            if (t % 10 in 2..4) string += "тысячи"
+            if (t % 10 in 5..9) string += "тысяч"
+        }
+        if (n / 100 % 10 != 0) {
+            if (n % 1000 in 100..999) {
+                string += " "
+                string += hundred[n % 1000 / 100 - 1]
+                val t = n % 100
+                if (t < 10 && t != 0) {
+                    string += " "
+                    string += unit[t - 1]
+                }
+                if (t in 11..19) {
+                    string += " "
+                    string += eleven[t - 11]
+                }
+                if (t in 10..90 && t % 10 == 0) {
+                    string += " "
+                    string += ten[t / 10 - 1]
+                }
+                if (t in 21..99 && t % 10 != 0) {
+                    val q = t / 10 * 10
+                    string += " "
+                    string += ten[q / 10 - 1]
+                    string += " "
+                    string += unit[t % 10 - 1]
+                }
+            }
+        }
+        if (n / 100 % 10 == 0) {
+            val t = n % 100
+            if (t < 10 && t != 0) {
+                string += " "
+                string += unit[t - 1]
+            }
+            if (t in 11..19) {
+                string += " "
+                string += eleven[t - 11]
+            }
+            if (t in 10..90 && t % 10 == 0) {
+                string += " "
+                string += ten[t / 10 - 1]
+            }
+            if (t in 21..99 && t % 10 != 0) {
+                val q = t / 10 * 10
+                string += " "
+                string += ten[q / 10 - 1]
+                string += " "
+                string += unit[t % 10 - 1]
+            }
+        }
+        return string
+    }
+    return string
+}
