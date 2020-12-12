@@ -329,7 +329,7 @@ fun russian(n: Int): String {
         "шесть", "семь", "восемь", "девять"
     )
     val ten = listOf(
-        "десять", "двадцать", "тридцать", "сорок", "пятьдесяи",
+        "десять", "двадцать", "тридцать", "сорок", "пятьдесят",
         "шестьдесят", "семьдесят", "восемьдесят", "девяносто"
     )
     val eleven = listOf(
@@ -481,7 +481,7 @@ fun russian(n: Int): String {
         val t = n / 1000 % 100
         if (t < 10 && t != 0) {
             string += " "
-            string += unit[t - 1]
+            string += unit1[t - 1]
             if (t == 1) {
                 string += " "
                 string += "тысяча"
@@ -512,7 +512,7 @@ fun russian(n: Int): String {
             string += " "
             string += ten[q / 10 - 1]
             string += " "
-            string += unit[t % 10 - 1]
+            string += unit1[t % 10 - 1]
             string += " "
             if (t % 10 == 1) string += "тысяча"
             if (t % 10 in 2..4) string += "тысячи"
