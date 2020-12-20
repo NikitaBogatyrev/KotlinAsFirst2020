@@ -207,27 +207,26 @@ fun bestHighJump(jumps: String): Int {
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
 fun plusMinus(expression: String): Int {
-    val jump = expression.split(" ")
-    var sum = 0
-    var sumMinus = 0
-    for (i in jump.indices) {
-        if ((jump.size == 2) || (jump[i].contains(Regex("""(\+ | \-)\s(\+ | \-)"""))) ||
-            (jump[i].contains(Regex("""\-\d"""))) ||
-            (jump[i].contains(Regex("""\+\d"""))) ||
-            (jump[0] == "+" || jump[0] == "-") ||
-            (jump[i].contains(Regex("""\d\s\d""")))) throw IllegalArgumentException("")
-        if (jump[i] != "-" && jump[i] != "+") {
-            sum += jump[i].toInt()
+    if (expression.contains(Regex("""(\d\s((\+|\-)\s\d))+"""))) {
+        val jump = expression.split(" ")
+        var sum = 0
+        var sumMinus = 0
+        for (i in jump.indices) {
+            if (jump[i] != "-" && jump[i] != "+") {
+                sum += jump[i].toInt()
+            }
         }
-    }
-    for (i in jump.indices) {
-        if (jump[i] == "-") {
-            jump[i + 1].toInt()
-            sumMinus += jump[i + 1].toInt()
+        for (i in jump.indices) {
+            if (jump[i] == "-") {
+                jump[i + 1].toInt()
+                sumMinus += jump[i + 1].toInt()
+            }
         }
+        sum -= sumMinus * 2
+        return sum
     }
-    sum -= sumMinus * 2
-    return sum
+    if (expression.contains(Regex("""^\d$"""))) return expression.toInt()
+    throw IllegalArgumentException("")
 }
 
 /**
