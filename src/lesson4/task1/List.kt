@@ -373,7 +373,7 @@ fun russian(n: Int): String {
                 string += " "
                 string += "тысячи"
             }
-            if (n / 100 in 5..9) {
+            if (n / 1000 in 5..9) {
                 string += unit[n / 1000 - 1]
                 string += " "
                 string += "тысяч"
