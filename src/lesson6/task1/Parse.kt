@@ -225,7 +225,7 @@ fun plusMinus(expression: String): Int {
         sum -= sumMinus * 2
         return sum
     }
-    if (expression.contains(Regex("""^\d$"""))) return expression.toInt()
+    if (expression.contains(Regex("""^\d+$"""))) return expression.toInt()
     throw IllegalArgumentException("")
 }
 
